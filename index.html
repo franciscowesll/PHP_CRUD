@@ -54,14 +54,21 @@
 
 		const xhr = new XMLHttpRequest();
 
-		xhr.open('GET', 'search.php?search='+name, true);
-
-		xhr.onload = function() {
+		xhr.open('POST', 'search.php?search='+name, true);
+		if (this.readyState === 4 && this.status === 200)
+        {
+            //alert(this.responseText); // Here is the response
+            document.getElementById("response_message").innerHTML = this.responseText;
+           // console.log(this.responseText);
+        }
+		
+    	var formData = new FormData(form);
+	//	xhr.onload = function() {
 			
-			resultado.innerHTML = this.responseText;
-			console.table(this.responseText)
-		};
-		xhr.send();
+		//	resultado.innerHTML = this.responseText;
+		//	console.table(this.responseText)
+	//	};
+		xhr.send(formData);
 		
 		})
 			
