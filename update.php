@@ -8,6 +8,13 @@ if($POST['action']=='update'){
 	$name = $POST['name'];
 	$valor = $POST['valor'];
 	$query = "update item set prod_vl_compra = $valor where item_codigo like = $id";
+	$result = mysqli_query($conex,$query);
+	if($result){
+	echo "
+	<script>
+		alert('item atualizado');
+	</script>"	
+	}
 }
 
 ?>
